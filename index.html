@@ -1,15 +1,31 @@
 ﻿<!DOCTYPE html>
-<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="es"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="es"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!--><html class="no-js" lang="es"> <!--<![endif]-->
 <head>
 
    <!--- Basic Page Needs
    ================================================== -->
    <meta charset="utf-8">
-	<title>Carmelo Mayén</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<title>Carmelo Mayén — Fullstack Software Engineer</title>
+	<meta name="description" content="Carmelo Mayén — Ingeniero en Sistemas de Información y Fullstack Software Engineer en Walmart. Especialista en .NET, Java, C# y seguridad informática.">
+	<meta name="author" content="Carmelo Mayén">
+	<link rel="canonical" href="https://cv.cemayen.com/">
+
+   <!-- Open Graph
+   ================================================== -->
+   <meta property="og:title" content="Carmelo Mayén — Fullstack Software Engineer">
+   <meta property="og:description" content="Ingeniero en Sistemas de Información con Maestría en Seguridad Informática. Especialista en .NET, Java, C# y desarrollo web.">
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://cv.cemayen.com/">
+   <meta property="og:image" content="https://cv.cemayen.com/images/profile.jpg">
+
+   <!-- Twitter Card
+   ================================================== -->
+   <meta name="twitter:card" content="summary">
+   <meta name="twitter:title" content="Carmelo Mayén — Fullstack Software Engineer">
+   <meta name="twitter:description" content="Ingeniero en Sistemas de Información con Maestría en Seguridad Informática. Especialista en .NET, Java, C# y desarrollo web.">
+   <meta name="twitter:image" content="https://cv.cemayen.com/images/profile.jpg">
 
    <!-- Mobile Specific Metas
    ================================================== -->
@@ -17,44 +33,94 @@
 
 	<!-- CSS
     ================================================== -->
-   <link rel="stylesheet" href="css/default.css">
-	<link rel="stylesheet" href="css/layout.css">
-   <link rel="stylesheet" href="css/media-queries.css">
-   <link rel="stylesheet" href="css/magnific-popup.css">
-
-   <!-- Script
-   ================================================== -->
-	<script src="js/modernizr.js"></script>
+   <link rel="stylesheet" href="css/main.css">
 
    <!-- Favicons
 	================================================== -->
-	<link rel="shortcut icon" href="favicon.png" >
+	<link rel="shortcut icon" href="favicon.png">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-51146403-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+   <!-- Theme color (barra del navegador en móvil)
+   ================================================== -->
+   <meta name="theme-color" content="#11ABB0">
 
-      gtag('config', 'UA-51146403-2');
-    </script>
+   <!-- Preload critical image
+   ================================================== -->
+   <link rel="preload" as="image" href="images/Tikal.webp" type="image/webp">
+   <link rel="preload" as="image" href="images/Tikal.jpg">
 
+   <!-- Google Analytics 4
+   ================================================== -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-243ETKWRCY"></script>
+   <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     gtag('config', 'G-243ETKWRCY');
+   </script>
+
+   <!-- Schema.org — Structured Data (Person)
+   ================================================== -->
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "Person",
+     "name": "Carmelo Mayén",
+     "jobTitle": "Fullstack Software Engineer",
+     "description": "Ingeniero en Sistemas de Información con Maestría en Seguridad Informática. Fullstack Software Engineer especializado en .NET, Java y desarrollo web.",
+     "url": "https://cv.cemayen.com",
+     "image": "https://cv.cemayen.com/images/profile.jpg",
+     "email": "carmelo5mayen@gmail.com",
+     "telephone": "+50242066010",
+     "nationality": "GT",
+     "worksFor": {
+       "@type": "Organization",
+       "name": "Walmart (BDG, S.A.)"
+     },
+     "alumniOf": {
+       "@type": "EducationalOrganization",
+       "name": "Universidad Mariano Gálvez de Guatemala"
+     },
+     "hasCredential": {
+       "@type": "EducationalOccupationalCredential",
+       "name": "Maestría en Seguridad Informática",
+       "credentialCategory": "degree"
+     },
+     "knowsAbout": [
+       "C#", ".NET Core", "Java", "JavaScript", "SQL",
+       "Seguridad Informática", "Desarrollo Fullstack", "MVC"
+     ],
+     "sameAs": [
+       "https://facebook.com/mayen5",
+       "https://twitter.com/mayen5",
+       "https://linkedin.com/in/mayen5/",
+       "https://instagram.com/mayen5",
+       "https://github.com/mayen5"
+     ]
+   }
+   </script>
 
 </head>
 
 <body>
 
+   <!-- Skip to main content (accesibilidad teclado)
+   ================================================== -->
+   <a class="skip-link" href="#about">Saltar al contenido principal</a>
+
    <!-- Header
    ================================================== -->
    <header id="home">
 
-      <nav id="nav-wrap">
+      <nav id="nav-wrap" aria-label="Navegación principal">
 
-         <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
-	      <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+         <button id="nav-toggle" class="mobile-btn"
+                 aria-expanded="false"
+                 aria-controls="nav"
+                 aria-label="Abrir navegación">
+            <span aria-hidden="true"></span>
+         </button>
 
-         <ul id="nav" class="nav">
+         <ul id="nav" class="nav" role="list">
             <li class="current"><a class="smoothscroll" href="#home">Inicio</a></li>
             <li><a class="smoothscroll" href="#about">Acerca de</a></li>
 	         <li><a class="smoothscroll" href="#resume">Resumen</a></li>
@@ -72,17 +138,16 @@
 				y conoce más <a class="smoothscroll" href="#about">acerca de mi</a>.</span></h3>
             <hr />
             <ul class="social">
-               <li><a target="_blank" href="https://facebook.com/mayen5"><i class="fa fa-facebook"></i></a></li>
-               <li><a target="_blank" href="https://twitter.com/mayen5"><i class="fa fa-twitter"></i></a></li>
-               <li><a target="_blank" href="https://linkedin.com/in/mayen5/"><i class="fa fa-linkedin"></i></a></li>
-               <li><a target="_blank" href="https://instagram.com/mayen5"><i class="fa fa-instagram"></i></a></li>
-               <li><a href="#"><i class="fa fa-skype"></i></a></li>
+               <li><a target="_blank" rel="noopener noreferrer" href="https://facebook.com/mayen5" aria-label="Facebook de Carmelo Mayén"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+               <li><a target="_blank" rel="noopener noreferrer" href="https://twitter.com/mayen5" aria-label="Twitter de Carmelo Mayén"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+               <li><a target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/mayen5/" aria-label="LinkedIn de Carmelo Mayén"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+               <li><a target="_blank" rel="noopener noreferrer" href="https://instagram.com/mayen5" aria-label="Instagram de Carmelo Mayén"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
             </ul>
          </div>
       </div>
 
       <p class="scrolldown">
-         <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
+         <a class="smoothscroll" href="#about" aria-label="Desplazarse hacia abajo"><i class="icon-down-circle" aria-hidden="true"></i></a>
       </p>
 
    </header> <!-- Header End -->
@@ -96,7 +161,7 @@
 
          <div class="three columns">
 
-            <img class="profile-pic"  src="images/profile.jpg" alt="" />
+            <img class="profile-pic" src="images/profile.jpg" alt="Carmelo Mayén, Fullstack Software Engineer">
 
          </div>
 
@@ -123,7 +188,7 @@
 
                <div class="columns download">
                   <p>
-                     <a target="_blank" href="doc/cv.pdf" class="button"><i class="fa fa-download"></i>Descarga mi CV</a>
+                     <a target="_blank" rel="noopener noreferrer" href="doc/cv.pdf" class="button" aria-label="Descargar CV de Carmelo Mayén (PDF)"><i class="fa fa-download" aria-hidden="true"></i>Descarga mi CV</a>
                   </p>
                </div>
 
@@ -305,11 +370,11 @@
 
 				   <ul class="skills">
 					   <li><span class="bar-expand cSharp"></span><em>C#</em></li>
-                        <li><span class="bar-expand netFramework"></span><em>.NET Framework</em></li>
-						<li><span class="bar-expand java"></span><em>JAVA</em></li>
-						<li><span class="bar-expand css"></span><em>CSS</em></li>
-						<li><span class="bar-expand html5"></span><em>HTML5</em></li>
-                        <li><span class="bar-expand jquery"></span><em>jQuery</em></li>
+					   <li><span class="bar-expand dotNetCore"></span><em>.NET Core / .NET 8</em></li>
+					   <li><span class="bar-expand java"></span><em>Java</em></li>
+					   <li><span class="bar-expand javascript"></span><em>JavaScript</em></li>
+					   <li><span class="bar-expand sql"></span><em>SQL</em></li>
+					   <li><span class="bar-expand security"></span><em>Ciberseguridad</em></li>
 					</ul>
 
 				</div><!-- end skill-bars -->
@@ -338,7 +403,7 @@
                   <div class="item-wrap">
 
                      <a href="#modal-01" title="">
-                        <img alt="" src="images/portfolio/taxes.png">
+                        <img alt="Sistema de impuestos en .NET MVC" src="images/portfolio/taxes.png" loading="lazy">
                         <div class="overlay">
                            <div class="portfolio-item-meta">
           					      <h5>Taxes</h5>
@@ -355,7 +420,7 @@
                   <div class="item-wrap">
 
                      <a href="#modal-02" title="">
-                        <img alt="" src="images/portfolio/cart.jpg">
+                        <img alt="Sistema de productos en .NET Core MVC" src="images/portfolio/cart.jpg" loading="lazy">
                         <div class="overlay">
                            <div class="portfolio-item-meta">
           					      <h5>Productos</h5>
@@ -372,7 +437,7 @@
                   <div class="item-wrap">
 
                      <a href="#modal-03" title="">
-                        <img alt="" src="images/portfolio/github.png">
+                        <img alt="Repositorio de proyectos en GitHub" src="images/portfolio/github.png" loading="lazy">
                         <div class="overlay">
                            <div class="portfolio-item-meta">
           					      <h5>Repositorio</h5>
@@ -393,53 +458,53 @@
          <!-- Modal Popup
 	      --------------------------------------------------------------- -->
 
-         <div id="modal-01" class="popup-modal mfp-hide">
+         <div id="modal-01" class="popup-modal mfp-hide" role="dialog" aria-modal="true" aria-labelledby="modal-01-title">
 
-		      <img class="scale-with-grid" src="images/portfolio/modals/taxes.png" alt="" />
+		      <img class="scale-with-grid" src="images/portfolio/modals/taxes.png" alt="Captura del sistema de impuestos Taxes en .NET MVC" />
 
 		      <div class="description-box">
-			      <h4>Taxes</h4>
+			      <h4 id="modal-01-title">Taxes</h4>
 			      <p>Desarrollo web en C# con .NET Framework, MVC.</p>
-               <span class="categories"><i class="fa fa-tag"></i>Web Development, Desarrollo Web</span>
+               <span class="categories"><i class="fa fa-tag" aria-hidden="true"></i>Web Development, Desarrollo Web</span>
 		      </div>
 
             <div class="link-box">
-               <a target="_blank" href="https://taxesmayen.azurewebsites.net/">Detalles</a>
-		         <a class="popup-modal-dismiss">Cerrar</a>
+               <a target="_blank" rel="noopener noreferrer" href="https://taxesmayen.azurewebsites.net/">Detalles</a>
+		         <button class="popup-modal-dismiss">Cerrar</button>
             </div>
 
 	      </div><!-- modal-01 End -->
 
-         <div id="modal-02" class="popup-modal mfp-hide">
+         <div id="modal-02" class="popup-modal mfp-hide" role="dialog" aria-modal="true" aria-labelledby="modal-02-title">
 
-		      <img class="scale-with-grid" src="images/portfolio/modals/cart.jpg" alt="" />
+		      <img class="scale-with-grid" src="images/portfolio/modals/cart.jpg" alt="Captura del sistema de productos en .NET Core MVC" />
 
 		      <div class="description-box">
-			      <h4>Products</h4>
+			      <h4 id="modal-02-title">Products</h4>
 			      <p>Desarrollo web en C# con .NET Core, MVC.</p>
-               <span class="categories"><i class="fa fa-tag"></i>Web Development, Desarrollo Web</span>
+               <span class="categories"><i class="fa fa-tag" aria-hidden="true"></i>Web Development, Desarrollo Web</span>
 		      </div>
 
             <div class="link-box">
-               <a target="_blank" href="https://shopmayen.azurewebsites.net/">Detalles</a>
-		         <a class="popup-modal-dismiss">Cerrar</a>
+               <a target="_blank" rel="noopener noreferrer" href="https://shopmayen.azurewebsites.net/">Detalles</a>
+		         <button class="popup-modal-dismiss">Cerrar</button>
             </div>
 
 	      </div><!-- modal-02 End -->
-		  
-		  <div id="modal-03" class="popup-modal mfp-hide">
 
-		      <img class="scale-with-grid" src="images/portfolio/modals/github.png" alt="" />
+		  <div id="modal-03" class="popup-modal mfp-hide" role="dialog" aria-modal="true" aria-labelledby="modal-03-title">
+
+		      <img class="scale-with-grid" src="images/portfolio/modals/github.png" alt="Repositorio de proyectos en GitHub de Carmelo Mayén" />
 
 		      <div class="description-box">
-			      <h4>Repositorio</h4>
+			      <h4 id="modal-03-title">Repositorio</h4>
 			      <p>Proyectos realizados en diferentes lenguajes.</p>
-               <span class="categories"><i class="fa fa-tag"></i>Web Development, Desarrollo Web</span>
+               <span class="categories"><i class="fa fa-tag" aria-hidden="true"></i>Web Development, Desarrollo Web</span>
 		      </div>
 
             <div class="link-box">
-               <a target="_blank" href="https://github.com/mayen5/">Detalles</a>
-		         <a class="popup-modal-dismiss">Cerrar</a>
+               <a target="_blank" rel="noopener noreferrer" href="https://github.com/mayen5/">Detalles</a>
+		         <button class="popup-modal-dismiss">Cerrar</button>
             </div>
 
 	      </div><!-- modal-03 End -->
@@ -475,33 +540,37 @@
             <div class="eight columns">
 
                <!-- form -->
-               <form action="" method="post" id="contactForm" name="contactForm">
+               <form action="" method="post" id="contactForm" name="contactForm" novalidate>
 					<fieldset>
+                  <legend class="sr-only">Formulario de contacto</legend>
 
                   <div>
-						   <label for="contactName">Nombre <span class="required">*</span></label>
-						   <input type="text" value="" size="35" id="contactName" name="contactName">
+						   <label for="contactName">Nombre <span class="required" aria-hidden="true">*</span></label>
+						   <input type="text" id="contactName" name="contactName"
+                           autocomplete="name" required aria-required="true">
                   </div>
 
                   <div>
-						   <label for="contactEmail">Email <span class="required">*</span></label>
-						   <input type="text" value="" size="35" id="contactEmail" name="contactEmail">
+						   <label for="contactEmail">Email <span class="required" aria-hidden="true">*</span></label>
+						   <input type="email" id="contactEmail" name="contactEmail"
+                           autocomplete="email" required aria-required="true">
                   </div>
 
                   <div>
 						   <label for="contactSubject">Asunto</label>
-						   <input type="text" value="" size="35" id="contactSubject" name="contactSubject">
+						   <input type="text" id="contactSubject" name="contactSubject">
                   </div>
 
                   <div>
-                     <label for="contactMessage">Mensaje <span class="required">*</span></label>
-                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                     <label for="contactMessage">Mensaje <span class="required" aria-hidden="true">*</span></label>
+                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"
+                               required aria-required="true"></textarea>
                   </div>
 
                   <div>
-                     <button class="submit">Enviar</button>
-                     <span id="image-loader">
-                        <img alt="" src="images/loader.gif">
+                     <button class="submit" type="submit">Enviar</button>
+                     <span id="image-loader" aria-hidden="true">
+                        <img alt="Enviando..." src="images/loader.gif">
                      </span>
                   </div>
 
@@ -509,10 +578,10 @@
 				   </form> <!-- Form End -->
 
                <!-- contact-warning -->
-               <div id="message-warning"> Ha ocurrido un error</div>
+               <div id="message-warning" role="alert" aria-live="assertive" aria-atomic="true"> Ha ocurrido un error</div>
                <!-- contact-success -->
-				   <div id="message-success">
-                  <i class="fa fa-check"></i>Su mensaje ha sido enviado, gracias!<br>
+				   <div id="message-success" role="status" aria-live="polite" aria-atomic="true">
+                  <i class="fa fa-check" aria-hidden="true"></i>Su mensaje ha sido enviado, gracias!<br>
 				   </div>
 
             </div>
@@ -547,39 +616,33 @@
          <div class="twelve columns">
 
             <ul class="social-links">
-               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-               <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-               <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-               <li><a href="#"><i class="fa fa-skype"></i></a></li>
+               <li><a href="https://facebook.com/mayen5" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+               <li><a href="https://twitter.com/mayen5" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+               <li><a href="https://linkedin.com/in/mayen5/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+               <li><a href="https://instagram.com/mayen5" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+               <li><a href="https://github.com/mayen5" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa fa-github" aria-hidden="true"></i></a></li>
             </ul>
 
             <ul class="copyright">
-               <li>&copy; Copyright 2019 Carmelo Mayén</li>
-               <li>Design by <a title="Styleshout" href="http://www.styleshout.com/">Styleshout</a></li>   
+               <li>&copy; Copyright 2025 Carmelo Mayén</li>
+               <li>Design by <a title="Styleshout" href="https://www.styleshout.com/" rel="noopener noreferrer">Styleshout</a></li>
             </ul>
 
          </div>
 
-         <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+         <div id="go-top"><a class="smoothscroll" href="#home" aria-label="Volver al inicio"><i class="icon-up-open" aria-hidden="true"></i></a></div>
 
       </div>
 
    </footer> <!-- Footer End-->
 
-   <!-- Java Script
+   <!-- JavaScript
    ================================================== -->
-   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-   <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+   <script src="js/init.js" defer></script>
 
-   <script src="js/jquery.flexslider.js"></script>
-   <script src="js/waypoints.js"></script>
-   <script src="js/jquery.fittext.js"></script>
-   <script src="js/magnific-popup.js"></script>
-   <script src="js/init.js"></script>
+   <!-- Modal overlay backdrop (vanilla JS)
+   ================================================== -->
+   <div id="modal-bg" aria-hidden="true"></div>
 
 </body>
 

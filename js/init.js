@@ -1,188 +1,233 @@
-/*-----------------------------------------------------------------------------------
-/*
-/* Init JS
-/*
------------------------------------------------------------------------------------*/
+'use strict';
 
- jQuery(document).ready(function($) {
+document.addEventListener('DOMContentLoaded', function () {
 
-/*----------------------------------------------------*/
-/* FitText Settings
------------------------------------------------------- */
+   /* ============================================================
+      1. Mobile Navigation Toggle (accesible)
+   ============================================================ */
+   var navToggle = document.getElementById('nav-toggle');
+   var navWrap   = document.getElementById('nav-wrap');
 
-    setTimeout(function() {
-	   $('h1.responsive-headline').fitText(1, { minFontSize: '40px', maxFontSize: '90px' });
-	 }, 100);
-
-
-/*----------------------------------------------------*/
-/* Smooth Scrolling
------------------------------------------------------- */
-
-   $('.smoothscroll').on('click',function (e) {
-	    e.preventDefault();
-
-	    var target = this.hash,
-	    $target = $(target);
-
-	    $('html, body').stop().animate({
-	        'scrollTop': $target.offset().top
-	    }, 800, 'swing', function () {
-	        window.location.hash = target;
-	    });
-	});
-
-
-/*----------------------------------------------------*/
-/* Highlight the current section in the navigation bar
-------------------------------------------------------*/
-
-	var sections = $("section");
-	var navigation_links = $("#nav-wrap a");
-
-	sections.waypoint({
-
-      handler: function(event, direction) {
-
-		   var active_section;
-
-			active_section = $(this);
-			if (direction === "up") active_section = active_section.prev();
-
-			var active_link = $('#nav-wrap a[href="#' + active_section.attr("id") + '"]');
-
-         navigation_links.parent().removeClass("current");
-			active_link.parent().addClass("current");
-
-		},
-		offset: '35%'
-
-	});
-
-
-/*----------------------------------------------------*/
-/*	Make sure that #header-background-image height is
-/* equal to the browser height.
------------------------------------------------------- */
-
-   $('header').css({ 'height': $(window).height() });
-   $(window).on('resize', function() {
-
-        $('header').css({ 'height': $(window).height() });
-        $('body').css({ 'width': $(window).width() })
-   });
-
-
-/*----------------------------------------------------*/
-/*	Fade In/Out Primary Navigation
-------------------------------------------------------*/
-
-   $(window).on('scroll', function() {
-
-		var h = $('header').height();
-		var y = $(window).scrollTop();
-      var nav = $('#nav-wrap');
-
-	   if ( (y > h*.20) && (y < h) && ($(window).outerWidth() > 768 ) ) {
-	      nav.fadeOut('fast');
-	   }
-      else {
-         if (y < h*.20) {
-            nav.removeClass('opaque').fadeIn('fast');
-         }
-         else {
-            nav.addClass('opaque').fadeIn('fast');
-         }
-      }
-
-	});
-
-
-/*----------------------------------------------------*/
-/*	Modal Popup
-------------------------------------------------------*/
-
-    $('.item-wrap a').magnificPopup({
-
-       type:'inline',
-       fixedContentPos: false,
-       removalDelay: 200,
-       showCloseBtn: false,
-       mainClass: 'mfp-fade'
-
-    });
-
-    $(document).on('click', '.popup-modal-dismiss', function (e) {
-    		e.preventDefault();
-    		$.magnificPopup.close();
-    });
-
-
-/*----------------------------------------------------*/
-/*	Flexslider
-/*----------------------------------------------------*/
-   $('.flexslider').flexslider({
-      namespace: "flex-",
-      controlsContainer: ".flex-container",
-      animation: 'slide',
-      controlNav: true,
-      directionNav: false,
-      smoothHeight: true,
-      slideshowSpeed: 7000,
-      animationSpeed: 600,
-      randomize: false,
-   });
-
-/*----------------------------------------------------*/
-/*	contact form
-------------------------------------------------------*/
-
-   $('form#contactForm button.submit').click(function() {
-
-      $('#image-loader').fadeIn();
-
-      var contactName = $('#contactForm #contactName').val();
-      var contactEmail = $('#contactForm #contactEmail').val();
-      var contactSubject = $('#contactForm #contactSubject').val();
-      var contactMessage = $('#contactForm #contactMessage').val();
-
-      var data = 'contactName=' + contactName + '&contactEmail=' + contactEmail +
-               '&contactSubject=' + contactSubject + '&contactMessage=' + contactMessage;
-
-      $.ajax({
-
-	      type: "POST",
-	      url: "inc/sendEmail.php",
-	      data: data,
-	      success: function(msg) {
-
-            // Message was sent
-            if (msg == 'OK') {
-               $('#image-loader').fadeOut();
-               $('#message-warning').hide();
-               $('#contactForm').fadeOut();
-               $('#message-success').fadeIn();   
-            }
-            // There was an error
-            else {
-               $('#image-loader').fadeOut();
-               $('#message-warning').html(msg);
-	            $('#message-warning').fadeIn();
-            }
-
-	      }
-
+   if (navToggle && navWrap) {
+      navToggle.addEventListener('click', function () {
+         var expanded = this.getAttribute('aria-expanded') === 'true';
+         this.setAttribute('aria-expanded', String(!expanded));
+         navWrap.classList.toggle('nav-open');
+         this.setAttribute('aria-label',
+            expanded ? 'Abrir navegación' : 'Cerrar navegación');
       });
-      return false;
+
+      document.querySelectorAll('#nav a.smoothscroll').forEach(function (link) {
+         link.addEventListener('click', function () {
+            navWrap.classList.remove('nav-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Abrir navegación');
+         });
+      });
+
+      document.addEventListener('keydown', function (e) {
+         if (e.key === 'Escape' && navWrap.classList.contains('nav-open')) {
+            navWrap.classList.remove('nav-open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Abrir navegación');
+            navToggle.focus();
+         }
+      });
+   }
+
+
+   /* ============================================================
+      2. Smooth Scrolling
+   ============================================================ */
+   document.querySelectorAll('a.smoothscroll').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+         e.preventDefault();
+         var targetId = this.getAttribute('href');
+         var target   = document.querySelector(targetId);
+         if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+            history.pushState(null, '', targetId);
+         }
+      });
    });
 
+
+   /* ============================================================
+      3. Header height = viewport height
+   ============================================================ */
+   var headerEl = document.querySelector('header');
+
+   function setHeaderHeight() {
+      if (headerEl) headerEl.style.height = window.innerHeight + 'px';
+   }
+   setHeaderHeight();
+   window.addEventListener('resize', setHeaderHeight);
+
+
+   /* ============================================================
+      4. Nav: fade on scroll + clase opaque
+   ============================================================ */
+   var nav = document.getElementById('nav-wrap');
+
+   window.addEventListener('scroll', function () {
+      if (!headerEl || !nav) return;
+      var h = headerEl.offsetHeight;
+      var y = window.scrollY;
+
+      if (y > h * 0.20 && y < h && window.innerWidth > 768) {
+         nav.style.opacity       = '0';
+         nav.style.pointerEvents = 'none';
+      } else {
+         nav.style.opacity       = '1';
+         nav.style.pointerEvents = '';
+         nav.classList.toggle('opaque', y >= h * 0.20);
+      }
+   });
+
+
+   /* ============================================================
+      5. Resaltar sección activa en nav (IntersectionObserver)
+   ============================================================ */
+   var sections = document.querySelectorAll('section[id]');
+   var navLinks = document.querySelectorAll('#nav-wrap a[href^="#"]');
+
+   if ('IntersectionObserver' in window && sections.length) {
+      var sectionObserver = new IntersectionObserver(function (entries) {
+         entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+               navLinks.forEach(function (l) {
+                  l.parentElement.classList.remove('current');
+               });
+               var active = document.querySelector(
+                  '#nav-wrap a[href="#' + entry.target.id + '"]');
+               if (active) active.parentElement.classList.add('current');
+            }
+         });
+      }, { threshold: 0.35 });
+
+      sections.forEach(function (s) { sectionObserver.observe(s); });
+   }
+
+
+   /* ============================================================
+      6. Portfolio Modals (sin jQuery / sin Magnific Popup)
+   ============================================================ */
+   var modalBg        = document.getElementById('modal-bg');
+   var lastFocusedEl  = null;
+
+   function openModal(modalId) {
+      var modal = document.querySelector(modalId);
+      if (!modal) return;
+      lastFocusedEl = document.activeElement;
+      modal.classList.remove('mfp-hide');
+      modal.classList.add('mfp-show');
+      modal.setAttribute('aria-hidden', 'false');
+      if (modalBg) modalBg.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      var first = modal.querySelector('a[href], button');
+      if (first) first.focus();
+   }
+
+   function closeModal() {
+      document.querySelectorAll('.popup-modal.mfp-show').forEach(function (m) {
+         m.classList.remove('mfp-show');
+         m.classList.add('mfp-hide');
+         m.setAttribute('aria-hidden', 'true');
+      });
+      if (modalBg) modalBg.classList.remove('active');
+      document.body.style.overflow = '';
+      if (lastFocusedEl) lastFocusedEl.focus();
+   }
+
+   document.querySelectorAll('.item-wrap a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+         e.preventDefault();
+         openModal(this.getAttribute('href'));
+      });
+   });
+
+   document.querySelectorAll('.popup-modal-dismiss').forEach(function (btn) {
+      btn.addEventListener('click', closeModal);
+   });
+
+   if (modalBg) {
+      modalBg.addEventListener('click', closeModal);
+   }
+
+   document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeModal();
+   });
+
+
+   /* ============================================================
+      7. Skill bars — animar al entrar en viewport
+   ============================================================ */
+   var skillBars = document.querySelectorAll('.bar-expand');
+
+   if (skillBars.length && 'IntersectionObserver' in window) {
+      skillBars.forEach(function (bar) {
+         bar.style.animationPlayState = 'paused';
+      });
+
+      var barObserver = new IntersectionObserver(function (entries) {
+         entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+               entry.target.style.animationPlayState = 'running';
+               barObserver.unobserve(entry.target);
+            }
+         });
+      }, { threshold: 0.3 });
+
+      skillBars.forEach(function (bar) { barObserver.observe(bar); });
+   }
+
+
+   /* ============================================================
+      8. Formulario de contacto — fetch en lugar de $.ajax
+   ============================================================ */
+   var contactForm = document.getElementById('contactForm');
+
+   if (contactForm) {
+      contactForm.querySelector('button.submit').addEventListener('click', function (e) {
+         e.preventDefault();
+
+         var loader  = document.getElementById('image-loader');
+         var warning = document.getElementById('message-warning');
+         var success = document.getElementById('message-success');
+
+         if (loader)  loader.style.display  = 'inline';
+         if (warning) warning.style.display = 'none';
+
+         var params = new URLSearchParams({
+            contactName:    document.getElementById('contactName').value,
+            contactEmail:   document.getElementById('contactEmail').value,
+            contactSubject: document.getElementById('contactSubject').value,
+            contactMessage: document.getElementById('contactMessage').value
+         });
+
+         fetch('inc/sendEmail.php', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body:    params.toString()
+         })
+         .then(function (r) { return r.text(); })
+         .then(function (msg) {
+            if (loader) loader.style.display = 'none';
+            if (msg.trim() === 'OK') {
+               contactForm.style.display = 'none';
+               if (success) success.style.display = 'block';
+            } else {
+               if (warning) { warning.textContent = msg; warning.style.display = 'block'; }
+            }
+         })
+         .catch(function () {
+            if (loader) loader.style.display = 'none';
+            if (warning) {
+               warning.textContent = 'Error de conexión. Por favor inténtalo de nuevo.';
+               warning.style.display = 'block';
+            }
+         });
+      });
+   }
 
 });
-
-
-
-
-
-
-
-

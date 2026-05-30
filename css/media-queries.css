@@ -108,57 +108,58 @@
       top: 0;
       right: 0;
    }
-   #nav-wrap > a {
-	   width: 48px;
-		height: 48px;
-		text-align: left;
-		background-color: #CC5200;
-		position: relative;
+   /* hamburger button */
+   #nav-wrap > button.mobile-btn {
+      width: 48px;
+      height: 48px;
+      background-color: #CC5200;
       border: none;
+      cursor: pointer;
       float: right;
-
-      font: 0/0 a;
-      text-shadow: none;
-      color: transparent;
-
       position: relative;
-      top: 0px;
+      top: 0;
       right: 30px;
+      padding: 0;
    }
-
-	#nav-wrap > a:before,
-   #nav-wrap > a:after {
-	   position: absolute;
-		border: 2px solid #fff;
-		top: 35%;
-		left: 25%;
-		right: 25%;
-		content: '';
-	}
-   #nav-wrap > a:after { top: 60%; }
-
-   /* toggle buttons */
-	#nav-wrap:not( :target ) > a:first-of-type,
-	#nav-wrap:target > a:last-of-type  {
-	   display: block;
-	}
+   #nav-wrap > button.mobile-btn:focus {
+      outline: 3px solid #fff;
+      outline-offset: 2px;
+   }
+   /* hamburger lines via pseudo-elements */
+   #nav-wrap > button.mobile-btn > span {
+      display: block;
+      position: absolute;
+      left: 25%;
+      right: 25%;
+      top: 35%;
+      border: 2px solid #fff;
+   }
+   #nav-wrap > button.mobile-btn > span::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 9px;
+      border: 2px solid #fff;
+   }
 
    /* hide menu panel */
    #nav-wrap ul#nav {
       height: auto;
-		display: none;
+      display: none;
       clear: both;
-      width: auto; 
-      float: right;     
+      width: auto;
+      float: right;
 
       position: relative;
       top: 12px;
       right: 0;
    }
 
-   /* display menu panels */
-	#nav-wrap:target > ul#nav	{
-	   display: block;
+   /* display menu when button is toggled */
+   #nav-wrap.nav-open > ul#nav {
+      display: block;
       padding: 30px 20px 48px 20px;
       background: #1f2024;
       margin: 0 30px;

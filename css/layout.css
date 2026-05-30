@@ -18,6 +18,24 @@
 
 ===================================================================== */
 
+/* =============================================================
+   CSS Custom Properties
+   ============================================================= */
+:root {
+   --color-primary:      #11ABB0;
+   --color-primary-dark: #0F9095;
+   --color-accent:       #F06000;
+   --color-bg-dark:      #1F2024;
+   --color-bg-light:     #ebeeee;
+   --color-section-bg:   #ffffff;
+   --color-text-heading: #313131;
+   --color-text-body:    #838C95;
+   --color-text-light:   #A8A8A8;
+   --color-white:        #ffffff;
+   --color-border:       #E8E8E8;
+   --color-bar-bg:       #313131;
+}
+
 /* ------------------------------------------------------------------ */
 /* a. General Styles
 /* ------------------------------------------------------------------ */
@@ -34,6 +52,10 @@ header {
    min-height: 500px;
    width: 100%;
    background: #161415 url("../images/Tikal.jpg") no-repeat top center;
+   background-image: image-set(
+      url("../images/Tikal.webp") type("image/webp"),
+      url("../images/Tikal.jpg") type("image/jpeg")
+   );
    background-size: cover !important;
 	-webkit-background-size: cover !important;
    text-align: center;
@@ -58,7 +80,9 @@ header .banner {
 
 header .banner-text { width: 100%; }
 header .banner-text h1 {
-   font: 90px/1.1em 'opensans-bold', sans-serif;
+   font-size: clamp(40px, 10vw, 90px);
+   line-height: 1.1em;
+   font-family: 'opensans-bold', sans-serif;
    color: #fff;
    letter-spacing: -2px;
    margin: 0 auto 18px auto;
@@ -325,86 +349,20 @@ ul#nav li.current a { color: #F06000; }
    border-radius: 3px 0 0 3px;
 }
 
-.cSharp {
-  	width: 75%;
-  	-moz-animation: cSharp 2s ease;
-  	-webkit-animation: cSharp 2s ease;
-}
-.netFramework {
-  	width: 70%;
-  	-moz-animation: netFramework 2s ease;
-  	-webkit-animation: netFramework 2s ease;
-}
-.java {
-  	width: 60%;
-  	-moz-animation: java 2s ease;
-  	-webkit-animation: java 2s ease;
-}
-.css {
-  	width: 65%;
-  	-moz-animation: css 2s ease;
-  	-webkit-animation: css 2s ease;
-}
-.html5 {
-  	width: 80%;
-  	-moz-animation: html5 2s ease;
-  	-webkit-animation: html5 2s ease;
-}
-.jquery {
-  	width: 50%;
-  	-moz-animation: jquery 2s ease;
-  	-webkit-animation: jquery 2s ease;
-}
+/* Skill bars — widths y animaciones */
+.cSharp      { width: 90%; animation: cSharp      2s ease; }
+.dotNetCore  { width: 85%; animation: dotNetCore  2s ease; }
+.java        { width: 75%; animation: java        2s ease; }
+.javascript  { width: 70%; animation: javascript  2s ease; }
+.sql         { width: 65%; animation: sql         2s ease; }
+.security    { width: 60%; animation: security    2s ease; }
 
-@-moz-keyframes cSharp {
-  0%   { width: 0px;  }
-  100% { width: 60%;  }
-}
-@-moz-keyframes netFramework {
-  0%   { width: 0px;  }
-  100% { width: 55%;  }
-}
-@-moz-keyframes java {
-  0%   { width: 0px;  }
-  100% { width: 50%;  }
-}
-@-moz-keyframes css {
-  0%   { width: 0px;  }
-  100% { width: 90%;  }
-}
-@-moz-keyframes html5 {
-  0%   { width: 0px;  }
-  100% { width: 80%;  }
-}
-@-moz-keyframes jquery {
-  0%   { width: 0px;  }
-  100% { width: 50%;  }
-}
-
-@-webkit-keyframes cSharp {
-  0%   { width: 0px;  }
-  100% { width: 60%;  }
-}
-@-webkit-keyframes netFramework {
-  0%   { width: 0px;  }
-  100% { width: 55%;  }
-}
-@-webkit-keyframes java {
-  0%   { width: 0px;  }
-  100% { width: 50%;  }
-}
-@-webkit-keyframes css {
-  0%   { width: 0px;  }
-  100% { width: 90%;  }
-}
-@-webkit-keyframes html5 {
-  0%   { width: 0px;  }
-  100% { width: 80%;  }
-}
-@-webkit-keyframes jquery {
-  0%   { width: 0px;  }
-  100% { width: 50%;  }
-}
+@keyframes cSharp     { 0% { width: 0; } 100% { width: 90%; } }
+@keyframes dotNetCore { 0% { width: 0; } 100% { width: 85%; } }
+@keyframes java       { 0% { width: 0; } 100% { width: 75%; } }
+@keyframes javascript { 0% { width: 0; } 100% { width: 70%; } }
+@keyframes sql        { 0% { width: 0; } 100% { width: 65%; } }
+@keyframes security   { 0% { width: 0; } 100% { width: 60%; } }
 
 /* ------------------------------------------------------------------ */
 /* e. Portfolio Section
@@ -639,7 +597,7 @@ call-to-action .button {
 /* ------------------------------------------------------------------ */
 
 #testimonials {
-   background: #1F1F1F url(../images/testimonials-bg.jpg) no-repeat center center;
+   background: #1F1F1F no-repeat center center;
    background-size: cover !important;
 	-webkit-background-size: cover !important;
    background-attachment: fixed;
@@ -1002,5 +960,162 @@ footer .social-links li:first-child { margin-left: 0; }
    line-height: 60px;
  	border-radius: 100%;
 }
-#go-top a:hover { background-color: #0F9095; }
+#go-top a:hover { background-color: var(--color-primary-dark); }
 
+
+/* =============================================================
+   Dark Mode  (@media prefers-color-scheme: dark)
+   ============================================================= */
+@media (prefers-color-scheme: dark) {
+
+   :root {
+      --color-section-bg:   #1a1a1a;
+      --color-bg-light:     #111111;
+      --color-text-heading: #e0e0e0;
+      --color-text-body:    #a0a0a0;
+      --color-border:       #2e2e2e;
+      --color-bar-bg:       #2a2a2a;
+   }
+
+   /* Resume section */
+   #resume { background: var(--color-section-bg); }
+   #resume .row.education,
+   #resume .row.work,
+   #resume .row.skill { border-bottom-color: var(--color-border); }
+   #resume h1 span,
+   #resume h2,
+   #resume h3 { color: var(--color-text-heading); }
+   #resume p,
+   #resume li { color: var(--color-text-body); }
+   #resume .info { color: #777; }
+   #resume em.date { color: #888; }
+
+   /* Skill bars track */
+   .bars ul.skills li { background: var(--color-bar-bg); }
+
+   /* Portfolio section */
+   #portfolio { background: var(--color-bg-light); }
+   #portfolio h1 { color: var(--color-text-heading); }
+
+   /* Portfolio item overlay text */
+   .portfolio-item-meta h5,
+   .portfolio-item-meta p { color: #fff; }
+
+   /* Modals */
+   .popup-modal { background: #1e1e1e; }
+   .popup-modal .description-box h4 { color: #e0e0e0; }
+   .popup-modal .description-box p,
+   .popup-modal .description-box .categories { color: #888; }
+
+   /* Contact section inputs */
+   #contact input,
+   #contact textarea {
+      background: #2a2a2a;
+      border-color: #444;
+      color: #e0e0e0;
+   }
+   #contact label { color: #b0b0b0; }
+}
+
+
+/* =============================================================
+   Modal Overlay — vanilla JS (sin Magnific Popup)
+   ============================================================= */
+
+#modal-bg {
+   display: none;
+   position: fixed;
+   inset: 0;
+   background: rgba(0, 0, 0, 0.88);
+   z-index: 1000;
+   cursor: pointer;
+}
+#modal-bg.active {
+   display: block;
+}
+
+.popup-modal.mfp-show {
+   display: block;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 1001;
+   max-height: 90vh;
+   overflow-y: auto;
+   animation: modalFadeIn 0.2s ease;
+}
+
+@keyframes modalFadeIn {
+   from { opacity: 0; transform: translate(-50%, -48%); }
+   to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+
+/* =============================================================
+   Accesibilidad
+   ============================================================= */
+
+/* Skip-to-content link — visible solo al recibir foco de teclado */
+.skip-link {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip: rect(0, 0, 0, 0);
+   white-space: nowrap;
+   border: 0;
+   text-decoration: none;
+}
+.skip-link:focus {
+   position: fixed;
+   top: 0;
+   left: 1rem;
+   z-index: 9999;
+   width: auto;
+   height: auto;
+   padding: 0.75rem 1.25rem;
+   margin: 0;
+   overflow: visible;
+   clip: auto;
+   white-space: normal;
+   background: #11ABB0;
+   color: #fff;
+   font-family: 'opensans-bold', sans-serif;
+   font-size: 14px;
+   border-radius: 0 0 4px 4px;
+   outline: 3px solid #fff;
+   outline-offset: 2px;
+}
+
+/* Clase para ocultar visualmente pero mantener accesible */
+.sr-only {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   clip: rect(0, 0, 0, 0);
+   white-space: nowrap;
+   border: 0;
+}
+
+/* popup-modal-dismiss como botón */
+button.popup-modal-dismiss {
+   background: none;
+   border: none;
+   cursor: pointer;
+   font-family: 'opensans-bold', sans-serif;
+   font-size: 11px;
+   text-transform: uppercase;
+   letter-spacing: 2px;
+   color: #fff;
+   padding: 0;
+}
+button.popup-modal-dismiss:focus {
+   outline: 2px solid #11ABB0;
+   outline-offset: 2px;
+}
