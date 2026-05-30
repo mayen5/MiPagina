@@ -1134,32 +1134,40 @@ ul#nav li.current a { color: #F06000; }
 }
 .bars li {
    position: relative;
-  	margin-bottom: 60px;
-  	background: #ccc;
-  	height: 42px;
-  	border-radius: 3px;
+   margin-bottom: 52px;
+   background: #e0e0e0;
+   height: 8px;
+   border-radius: 4px;
+}
+/* Porcentaje a la derecha de cada barra */
+.bars li::after {
+   content: attr(data-percent);
+   position: absolute;
+   right: 0;
+   top: -26px;
+   font: 12px/1 'opensans-bold', sans-serif;
+   color: var(--color-primary);
+   letter-spacing: 1px;
 }
 .bars li em {
-	font: 15px 'opensans-bold', sans-serif;
-   color: #313131;
-	text-transform: uppercase;
+   font: 13px/1 'opensans-bold', sans-serif;
+   color: #6e7881;
+   text-transform: uppercase;
    letter-spacing: 2px;
-	font-weight: normal;
+   font-weight: normal;
    position: relative;
-	top: -36px;
+   top: -26px;
 }
 .bar-expand {
    position: absolute;
    left: 0;
    top: 0;
-
    margin: 0;
-   padding-right: 24px;
-  	background: #313131;
-   display: inline-block;
-  	height: 42px;
-   line-height: 42px;
-   border-radius: 3px 0 0 3px;
+   height: 8px;
+   border-radius: 4px;
+   background: linear-gradient(90deg, #11ABB0 0%, #0dcfcf 100%);
+   box-shadow: 0 2px 8px rgba(17, 171, 176, 0.35);
+   display: block;
 }
 
 /* Skill bars — widths y animaciones */
@@ -1803,8 +1811,9 @@ footer .social-links li:first-child { margin-left: 0; }
    #resume .info { color: #777; }
    #resume em.date { color: #888; }
 
-   /* Skill bars track */
-   .bars ul.skills li { background: var(--color-bar-bg); }
+   /* Skill bars */
+   .bars ul.skills li   { background: #2e2e2e; }
+   .bars li em          { color: #a0a0a0; }
 
    /* Portfolio section */
    #portfolio { background: var(--color-bg-light); }
